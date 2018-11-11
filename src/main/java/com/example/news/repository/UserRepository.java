@@ -1,5 +1,5 @@
 package com.example.news.repository;
-import com.example.news.utils.User;
+import com.example.news.modle.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

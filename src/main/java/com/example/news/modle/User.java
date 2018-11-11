@@ -1,11 +1,10 @@
-package com.example.news.utils;
+package com.example.news.modle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @Entity
 public class User{

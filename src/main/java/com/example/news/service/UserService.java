@@ -1,10 +1,8 @@
 package com.example.news.service;
 
-import com.example.news.repository.NewsRepository;
 import com.example.news.repository.UserRepository;
 import com.example.news.results.Result;
-import com.example.news.utils.News;
-import com.example.news.utils.User;
+import com.example.news.modle.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
