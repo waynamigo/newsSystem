@@ -3,7 +3,6 @@ package com.example.news.service;
 import com.example.news.repository.UserRepository;
 import com.example.news.results.Result;
 import com.example.news.modle.User;
-import com.example.news.tools.JwtUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
