@@ -1,7 +1,6 @@
 package com.example.news.controller;
 
 import com.example.news.results.Result;
-import com.example.news.service.NewsService;
 import com.example.news.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/User/")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService= new UserService();
@@ -20,7 +19,7 @@ public class UserController {
     @PostMapping(value = "/login/")
     public Result login(@ApiParam(value = "username" ,required=true ) @RequestParam String username,
                         @ApiParam(value = "password" ,required=true ) @RequestParam String password){
-        return userService.findUser(username,password);
+        return userService.findUserR(username,password);
     }
     @ApiOperation(value = "adduser", notes = "add", response = Result.class)
     @PostMapping(value = "/add/")

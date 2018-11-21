@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/NewsOperate/")
+@RequestMapping("/news")
 public class NewsController {
     @Autowired
     NewsService newsService = new NewsService();
@@ -24,14 +24,13 @@ public class NewsController {
 
     @ApiOperation(value = "delete", notes = "delete", response = Result.class)
     @PostMapping(value = "/delete/")
-    public  Result delete(@ApiParam(value = "title" ,required=true ) @RequestParam String title,
-                          @ApiParam(value = "content" ,required=true ) @RequestParam String content){
-        return newsService.publishnews(title,content);
+    public  Result delete(@ApiParam(value = "title" ,required=true ) @RequestParam String title){
+        return newsService.deletenews(title);
     }
 
     @ApiOperation(value = "overview", notes = "overview", response = Result.class)
     @PostMapping(value = "/overview/")
     public  Result overview(){
-        return newsService.findallnews();
+        return newsService.findallnewsR();
     }
 }
