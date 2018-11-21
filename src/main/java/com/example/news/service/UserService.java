@@ -30,7 +30,6 @@ public class UserService {
                 String password = MD5.string(passwd + user.getSalt());
                 System.out.println(password+"="+user.getPassword());
                 if (password.equals(user.getPassword())){
-//                    String token = JwtUtils.createToken(userPassword.getId());
                     return user;
                 } else {
                     return null;
@@ -51,7 +50,6 @@ public class UserService {
                 String password = MD5.string(passwd + user.getSalt());
                 System.out.println(password + "=" + user.getPassword());
                 if (password.equals(user.getPassword())) {
-//                    String token = JwtUtils.createToken(userPassword.getId());
                     return Result.success(user);
                 } else {
                     return Result.error("wrong password");
