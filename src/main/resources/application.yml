@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/fakename
-    username: adminfake
-    password: doyoulikevanyousee?/滑稽
+    url: jdbc:mysql://localhost:3306/newsbase
+    username: newsadmin
+    password: news123
     test-while-idle: true
     validation-query: SELECT 1
   jpa:
@@ -21,6 +21,7 @@ spring:
   thymeleaf:
       prefix: "classpath:/templates/"
       suffix: ".html"
+      cache: false
 server:
   port: 8086
 

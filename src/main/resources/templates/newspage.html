@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en" class="app">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<section>
+
+    <div class="box">
+        <div class="table" id="chart" style="height:376px;overflow-y:scroll;overflow-x:scroll">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr id="chartheader">
+                    <th>新闻编号</th>
+                    <th>新闻标题</th>
+                    <th>新闻内容</th>
+                    <th style="width:100px;text-align:center">操作</th>
+                </tr>
+
+                <tr th:each="News:${news}">
+                    <td th:text="${News.getId}"></td>
+                    <td th:text="${News.getTitle()}"></td>
+                    <td th:text="${News.getContent()}"></td>
+                   <!--写审核功能-->
+                    <!--<td><a th:href="@{'/news/delete/'+${News.getNewsID()}}" class="ico del">Delete</a>-->
+                        <!--<a class="ico edit" th:onclick="'javascript:editNews(\''+${News.getNewsID()}+'\',\''+${News.getTime()}+'\',\''+${News.getTitle()}+-->
+									<!--'\',\''+${News.getSummary()}+'\',\''+${News.getNews_address()}+'\',\''+${News.getImg_address()}+'\',\''+${News.getHeat()}+'\',\''+${News.getTagID()}+'\')'">Edit</a></td>-->
+                </tr>
+
+            </table>
+
+
+
+        </div>
+        <!-- Table -->
+
+    </div>
+
+</section>
+
 </body>
 </html>
