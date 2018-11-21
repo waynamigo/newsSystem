@@ -1,4 +1,4 @@
-package com.example.distance.utils;
+package com.example.news.tools;
 
 import org.springframework.web.multipart.MultipartFile;
 
