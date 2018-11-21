@@ -29,7 +29,7 @@ public class NewsService {
     public Result editnews(Integer id,String title,String content){
         try{
             if(newsRepository.findNewsById(id)!=null){
-                newsRepository.deleteNewsByid(id);
+                newsRepository.deleteNewsByTitle(title);
                 newsRepository.save(new News(title,content));
                 return Result.success("修改成功");
             }
@@ -41,9 +41,9 @@ public class NewsService {
             return Result.error("有毒 滚去debug");
         }
     }
-    public Result deletenews(Integer id){
+    public Result deletenews(String title){
         try {
-            if (newsRepository.deleteNewsByid(id) ==true) {
+            if (newsRepository.deleteNewsByTitle(title) ==true) {
                 return Result.success("删除成功");
             } else {
                 return Result.error("删除失败");
@@ -68,7 +68,7 @@ public class NewsService {
     }
 
 
-    public Result findallnews(){
+    public Result findallnewsR(){
         try {
             List<News> newsList = newsRepository.findAll();
             if (newsList == null)
@@ -78,6 +78,19 @@ public class NewsService {
         }
         catch (Exception e) {
             return Result.error(e.getMessage());
+        }
+    }
+    public List<News> findallnews(){
+        List<News> newsList;
+        try {
+            newsList = newsRepository.findAll();
+            if (newsList == null)
+                return null;
+//            return Result.success(newsList);
+            return newsList;
+        }
+        catch (Exception e) {
+            return null;
         }
     }
 }

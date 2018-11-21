@@ -22,24 +22,46 @@ public class UserService {
             return Result.error(e.getMessage());
         }
     }
-    public Result findUser(String username,String passwd){
+    public User findUser(String username,String passwd){
         try{
-            User user= userRepository.findUserByUsername(username);
+            System.out.println(username+"end");
+            User user = userRepository.findUserByUsername(username);
             if (user!=null) {
                 String password = MD5.string(passwd + user.getSalt());
                 System.out.println(password+"="+user.getPassword());
                 if (password.equals(user.getPassword())){
 //                    String token = JwtUtils.createToken(userPassword.getId());
-                    return Result.success("ok.shebao");
+                    return user;
                 } else {
-                    return Result.error("login denied");
+                    return null;
                 }
             }else {
-                return Result.error("not exist:"+username);
+                return null;
             }
         }catch (Exception e){
             e.printStackTrace();
-            return Result.error("need to debug");
+            return null;
         }
+    }
+    public Result findUserR(String username,String passwd) {
+        try {
+            System.out.println(username + "end");
+            User user = userRepository.findUserByUsername(username);
+            if (user != null) {
+                String password = MD5.string(passwd + user.getSalt());
+                System.out.println(password + "=" + user.getPassword());
+                if (password.equals(user.getPassword())) {
+//                    String token = JwtUtils.createToken(userPassword.getId());
+                    return Result.success(user);
+                } else {
+                    return Result.error("wrong password");
+                }
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
