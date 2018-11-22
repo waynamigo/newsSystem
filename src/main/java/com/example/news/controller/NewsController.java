@@ -19,13 +19,13 @@ public class NewsController {
     @PostMapping(value = "/publish/")
     public Result publish(@ApiParam(value = "title" ,required=true ) @RequestParam String title,
                          @ApiParam(value = "content" ,required=true ) @RequestParam String content){
-        return newsService.publishnews(title,content);
+        return newsService.publishnewsR(title,content);
     }
 
     @ApiOperation(value = "delete", notes = "delete", response = Result.class)
     @PostMapping(value = "/delete/")
     public  Result delete(@ApiParam(value = "title" ,required=true ) @RequestParam String title){
-        return newsService.deletenews(title);
+        return newsService.deletenewsR(title);
     }
 
     @ApiOperation(value = "overview", notes = "overview", response = Result.class)
