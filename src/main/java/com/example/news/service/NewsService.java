@@ -15,7 +15,7 @@ public class NewsService {
     @Autowired
     NewsRepository newsRepository;
 
-    public Result publishnews(String title, String content) {
+    public Result publishnewsR(String title, String content) {
         try {
             News anews = new News(title, content);
             newsRepository.save(anews);
@@ -25,72 +25,118 @@ public class NewsService {
             return Result.error("有毒 滚去debug");
         }
     }
-    
-    public Result editnews(Integer id,String title,String content){
-        try{
-            if(newsRepository.findNewsById(id)!=null){
+    public boolean publishnews(String title, String content) {
+        try {
+            News anews = new News(title, content);
+            newsRepository.save(anews);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public Result editnews(Integer id, String title, String content) {
+        try {
+            if (newsRepository.findNewsById(id) != null) {
                 newsRepository.deleteNewsByTitle(title);
-                newsRepository.save(new News(title,content));
+                newsRepository.save(new News(title, content));
                 return Result.success("修改成功");
-            }
-            else {
+            } else {
                 return Result.error();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return Result.error("有毒 滚去debug");
         }
     }
-    public Result deletenews(String title){
+
+    public Result deletenewsR(String title) {
         try {
-            if (newsRepository.deleteNewsByTitle(title) ==true) {
+            if (newsRepository.deleteNewsByTitle(title) == true) {
                 return Result.success("删除成功");
             } else {
                 return Result.error("删除失败");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return Result.error("有毒 滚去debug");
         }
     }
-    public Result findnews(String title){
+    public boolean admitnews(News news){
+        try {
+            newsRepository.deleteNewsById(news.getId());
+            news.setReviewed(1);
+            newsRepository.save(news);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("delete fault");
+            return false;
+        }
+    }
+    public boolean deletenews(int id) {
+        try {
+            newsRepository.deleteNewsById(id);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("delete fault");
+            return false;
+        }
+
+    }
+    public Result findnews(String title) {
         try {
             if (newsRepository.findNewsByTitle(title) != null) {
                 return Result.success("查找成功");
-            } else{
+            } else {
                 return Result.error("无此新闻");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return Result.error("有毒 滚去debug");
         }
     }
 
 
-    public Result findallnewsR(){
+    public Result findallnewsR() {
         try {
             List<News> newsList = newsRepository.findAll();
             if (newsList == null)
                 return new ErrorResult();
 //            return Result.success(newsList);
             return new SuccessResult(newsList);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return Result.error(e.getMessage());
         }
     }
-    public List<News> findallnews(){
-        List<News> newsList;
+    public List<News> viewallnews() {
         try {
-            newsList = newsRepository.findAll();
-            if (newsList == null)
+            List<News> newsList = newsRepository.findByIdIs(1);
+            if (newsList == null) {
+                System.out.println("null point");
                 return null;
+            }
 //            return Result.success(newsList);
             return newsList;
+        } catch (Exception e) {
+            System.out.println("error");
         }
-        catch (Exception e) {
-            return null;
+        return null;
+    }
+    public List<News> findallnews() {
+        try {
+            List<News> newsList = newsRepository.findAll();
+            if (newsList == null) {
+                System.out.println("null point");
+                return null;
+            }
+//            return Result.success(newsList);
+            return newsList;
+        } catch (Exception e) {
+            System.out.println("error");
         }
+        return null;
     }
 }
+
