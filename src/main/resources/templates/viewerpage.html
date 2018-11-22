@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en" class="app">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div class="box">
+    <div class="table" id="chart" style="height:376px;overflow-y:scroll;overflow-x:scroll">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr id="chartheader">
+                <th>新闻编号</th>
+                <th>新闻标题</th>
+                <th>新闻内容</th>
+                <th style="width:100px;text-align:center">操作</th>
+            </tr>
+            <tr th:each="News:${news}">
+                <td th:text="${News.getId()}"></td>
+                <td th:text="${News.getTitle()}"></td>
+                <td th:text="${News.getContent()}"></td>
+                <!--<td><a th:href="@{'/delete/'+${News.getId()}}" class="ico del">Delete</a>-->
+
+                <!--<td><a th:href="">Delete</a>-->
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>

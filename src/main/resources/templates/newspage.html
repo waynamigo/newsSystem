@@ -6,11 +6,8 @@
     <title>Title</title>
 </head>
 <body>
-<section>
-
     <div class="box">
         <div class="table" id="chart" style="height:376px;overflow-y:scroll;overflow-x:scroll">
-
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr id="chartheader">
                     <th>新闻编号</th>
@@ -18,27 +15,47 @@
                     <th>新闻内容</th>
                     <th style="width:100px;text-align:center">操作</th>
                 </tr>
-
                 <tr th:each="News:${news}">
-                    <td th:text="${News.getId}"></td>
+                    <td th:text="${News.getId()}"></td>
                     <td th:text="${News.getTitle()}"></td>
                     <td th:text="${News.getContent()}"></td>
-                   <!--写审核功能-->
-                    <!--<td><a th:href="@{'/news/delete/'+${News.getNewsID()}}" class="ico del">Delete</a>-->
-                        <!--<a class="ico edit" th:onclick="'javascript:editNews(\''+${News.getNewsID()}+'\',\''+${News.getTime()}+'\',\''+${News.getTitle()}+-->
-									<!--'\',\''+${News.getSummary()}+'\',\''+${News.getNews_address()}+'\',\''+${News.getImg_address()}+'\',\''+${News.getHeat()}+'\',\''+${News.getTagID()}+'\')'">Edit</a></td>-->
+                    <td>
+                        <form th:action="'/review/'+${News.getId()}" method="get" >
+                            <button type="submit" class="btn btn-lg btn-danger lt b-white b-2x btn-block" id="validate-submit">
+                                <i class="icon-arrow-right pull-right"></i>
+                                <span class="m-r-n-lg">通过</span>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:action="'/delete/'+${News.getId()}" method="get" >
+                            <button type="submit" class="btn btn-lg btn-danger lt b-white b-2x btn-block" id="validate-submit">
+                                <i class="icon-arrow-right pull-right"></i>
+                                <span class="m-r-n-lg">删除</span>
+                            </button>
+                        </form>
+                    </td>
+                    <!--<td><a th:href="@{/delete/${News.getTitle().trim()}}">Delete</a>-->
                 </tr>
-
             </table>
-
-
+        </div>
+    </div>
+    <div>发布新闻</div>
+        <div>
+            <form th:action="@{/publish/}" method="post" >
+                <div >
+                    <input type="text" name="title" placeholder="标题" class="form-control  input-lg text-center no-border">
+                </div>
+                <div >
+                    <input type="text" name="content" placeholder="正文" class="form-control  input-lg text-center no-border">
+                </div>
+                <button type="submit" class="btn btn-lg btn-danger lt b-white b-2x btn-block" id="validate-submit">
+                    <i class="icon-arrow-right pull-right"></i>
+                    <span class="m-r-n-lg">确认发布</span>
+                </button>
+            </form>
 
         </div>
-        <!-- Table -->
 
-    </div>
-
-</section>
-
-</body>
+    </body>
 </html>
