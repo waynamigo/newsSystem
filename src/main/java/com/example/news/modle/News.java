@@ -14,7 +14,7 @@ public class News{
     private Integer id;
     private String title;
     private String content;
-    private boolean reviewed;
+    private int reviewed;
     private int publisherid;
 
     public News() {
@@ -23,7 +23,7 @@ public class News{
     public News(String title, String content) {
         this.title = title;
         this.content = content;
-        reviewed = false;
+        reviewed = 0;
     }
 
     public Integer getId() {
@@ -50,11 +50,11 @@ public class News{
         this.content = content;
     }
 
-    public boolean isReviewed() {
+    public int isReviewed() {
         return reviewed;
     }
 
-    public void setReviewed(boolean reviewed) {
+    public void setReviewed(int reviewed) {
         this.reviewed = reviewed;
     }
 }
