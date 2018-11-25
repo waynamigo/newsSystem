@@ -21,13 +21,11 @@ public class NewsController {
                          @ApiParam(value = "content" ,required=true ) @RequestParam String content){
         return newsService.publishnewsR(title,content);
     }
-
     @ApiOperation(value = "delete", notes = "delete", response = Result.class)
     @PostMapping(value = "/delete/")
     public  Result delete(@ApiParam(value = "title" ,required=true ) @RequestParam String title){
         return newsService.deletenewsR(title);
     }
-
     @ApiOperation(value = "overview", notes = "overview", response = Result.class)
     @PostMapping(value = "/overview/")
     public  Result overview(){

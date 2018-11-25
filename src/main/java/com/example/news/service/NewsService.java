@@ -112,7 +112,7 @@ public class NewsService {
     }
     public List<News> viewallnews() {
         try {
-            List<News> newsList = newsRepository.findByIdIs(1);
+            List<News> newsList = newsRepository.findByReviewedIs(1);
             if (newsList == null) {
                 System.out.println("null point");
                 return null;

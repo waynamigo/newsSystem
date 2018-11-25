@@ -16,7 +16,7 @@ public interface NewsRepository extends JpaRepository<News,Integer> {
     List<News> findAll();
     News findNewsByTitle(String title);
     News findNewsById(Integer id);
-    List<News> findByIdIs(Integer reviewed);
+    List<News> findByReviewedIs(Integer reviewed);
     @Transactional
     Integer deleteNewsById(Integer id);
     @Transactional
