@@ -3,9 +3,9 @@
 ##创建数据库
 ```
 yum install mysql mysql-server mysql-devel
-create user classdesign;
-create database classdesign;
-grant all privileges on classsdesign.* to classdesign@localhost identified by'12345';
+create user newsadmin;
+create database newsbase;
+grant all privileges on newsbase.* to newsadmin@localhost identified by'password';
 ```
 * 数据库用户名，密码在application.yml文件中配置
 
@@ -13,7 +13,7 @@ grant all privileges on classsdesign.* to classdesign@localhost identified by'12
 ```bash
 yum install java-1.8.0-openjdk-devel
 安装maven到usr/local/apache-maven
-export MAVEN_HOME=/usr/local/apach-maven
+export MAVEN_HOME=/usr/local/apache-maven
 export PATH=${MAVEN_HOME}/bin:$PATH
 服务器端Could not find or load main class org.apache.maven.wrapper.MavenWrapperMain
 错误解决：mvn io.takari:maven:wrapper
