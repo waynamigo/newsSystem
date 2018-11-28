@@ -12,5 +12,4 @@ import java.util.List;
 public interface WeatherRepository extends JpaRepository<Weather,Integer> {
     public List<Weather> findAll();
     public Weather findWeatherByLocation(String location);
-
 }
