@@ -12,4 +12,3 @@ CREATE TABLE if not exists user(
   passwd varchar(255),
   salt varchar(127)
 );
-

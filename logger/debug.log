@@ -1,0 +1,7 @@
+2018-11-28 13:28:19[ http-nio-8086-exec-2:0 ] - [ INFO   ]  com.example.news.controller.PageController login failed:no such user 
+2018-11-28 13:28:21[ http-nio-8086-exec-3:1631 ] - [ INFO   ]  com.example.news.controller.PageController admin status 
+2018-11-28 13:28:21[ http-nio-8086-exec-3:1636 ] - [ INFO   ]  com.example.news.controller.PageController login success:username=admin 
+2018-11-28 13:28:40[ http-nio-8086-exec-5:20705 ] - [ INFO   ]  com.example.news.controller.PageController publish success:title=bignews1 
+2018-11-28 13:28:44[ http-nio-8086-exec-7:25182 ] - [ INFO   ]  com.example.news.controller.PageController check news(id=42) admit 
+2018-11-28 13:28:45[ http-nio-8086-exec-9:26049 ] - [ INFO   ]  com.example.news.controller.PageController check news(id=44) admit 
+2018-11-28 13:28:46[ http-nio-8086-exec-1:26830 ] - [ INFO   ]  com.example.news.controller.PageController check news(id=46) admit 
