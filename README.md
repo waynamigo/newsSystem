@@ -28,8 +28,8 @@ export PATH=${MAVEN_HOME}/bin:$PATH
 ##创建项目文件夹
 
 ```
-sudo mkdir /classdesign
-sudo chmod 754 /classdesign
+mkdir /classdesign
+chmod 754 /classdesign
 ```
 ##运行项目
 ```
