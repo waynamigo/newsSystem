@@ -56,6 +56,12 @@
             </form>
 
         </div>
+    <div>
+        <tr th:each="Weather:${weathers}">
+            <td th:text="${Weather.getTempreture()}"></td>
+            <td th:text="${Weather.getLocation()}"></td>
+            <td th:text="${Weather.getDate()}"></td>
+    </div>
 
     </body>
 </html>

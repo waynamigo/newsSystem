@@ -2,23 +2,18 @@ package com.example.news.controller;
 
 import com.example.news.modle.News;
 import com.example.news.modle.User;
-import com.example.news.repository.UserRepository;
 import com.example.news.service.NewsService;
 import com.example.news.service.UserService;
-import org.apache.commons.logging.Log;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import weatherExtra.Weather;
+import weatherExtraTest.IWeatherService;
+import weatherExtraTest.Weather;
+import weatherExtraTest.WeatherService;
 
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -72,6 +67,11 @@ public class PageController {
                     List<News> newslist = newsService.viewallnews();
                     model.addAttribute("news",newslist);
                     logger.info("get news list");
+
+                    IWeatherService weatherService=(WeatherService)Naming.lookup("rmi://127.0.0.1:6600/WeatherService");
+                    List<Weather> weatherList=weatherService.getWeatherList();
+                    model.addAttribute("weathers",weatherList);
+
                     return "viewerpage";
                 }
             } else {
@@ -130,19 +130,9 @@ public class PageController {
         }
         return null;
     }
-//    @PostMapping("/weather/")
-//    public String weather(Model model){//String username, String password,Model model){
-//        try{
-//            Weather weather = (Weather) Naming.lookup("rmi://localhost:8888/weather");
-//        } catch (NotBoundException e) {
-//            e.printStackTrace();
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    @PostMapping("/weather/")
+    public String weather(Model model) {//String username, String password,Model model){
 
-
+        return null;
+    }
 }

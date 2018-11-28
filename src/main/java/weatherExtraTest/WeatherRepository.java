@@ -1,9 +1,7 @@
-package weatherExtra;
+package weatherExtraTest;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 import java.util.List;
 
 /**

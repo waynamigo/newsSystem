@@ -1,4 +1,4 @@
-package weatherExtra;
+package weatherExtraTest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
