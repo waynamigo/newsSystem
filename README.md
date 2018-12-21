@@ -3,6 +3,7 @@
 ## 创建数据库
 ```
 yum install mysql mysql-server mysql-devel
+or [centos7.2](https://www.cnblogs.com/longrui/p/6071581.html)
 create user newsadmin;
 create database newsbase;
 grant all privileges on newsbase.* to newsadmin@localhost identified by'password';
